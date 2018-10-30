@@ -1,0 +1,27 @@
+Assumptions:
+
+	- No empty strings in the file
+	- The specified tuple size is smaller than the length of each file
+
+
+Command to compile:
+
+	- make
+
+
+Algorithm:
+
+	- First, the program creates a hashtable using the file of synonyms. Each
+	  line of the file represents a group of synonyms, and each synonym in the
+	  file is hashed as a key-value pair of itself and the first synonym in the
+	  group.
+	- Then, the program creates another hash table using the first file
+	  supplied (other than the synonym table). Using the specified 'n', every
+	  n-tuple from the file is preprocessed such that each synonym from a group
+	  is replaced with the first synonym from that group (using the hash table
+	  created above), and then stored in the hash table.
+	- The program then iterates through every n-tuple in the second file
+	  (preprocessed as above) using a vector; if the n-tuple exists in the
+	  hash table created using the first file, it is considered a hit.
+	- The total percentage of hits is calculated using the number of hits and
+	  the number of n-tuples in the second file and output to standard output.
